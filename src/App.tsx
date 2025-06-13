@@ -72,11 +72,80 @@ const ChessboardWithDnd = () => {
     setMovimentosEsperados(movimentos);
 
     // Verificar se o primeiro lance é das negras
-    setPrimeiroLanceNegras(verificarPrimeiroLance(exercicio.pgn));
+    const primeiroLanceEhNegras = verificarPrimeiroLance(exercicio.pgn);
+    setPrimeiroLanceNegras(primeiroLanceEhNegras);
 
     setGame(novoGame);
     setMovimentoAtual(0);
-    setFeedback("");
+    setFeedback("Sua vez de jogar!");
+  };
+
+  const fazerMovimentoAutomatico = () => {
+    if (movimentoAtual < movimentosEsperados.length - 1) {
+      try {
+        // Criar um novo jogo e carregar a posição inicial
+        const novoGame = new Chess();
+        const fen = extrairFEN(exercicios[exercicioAtual].pgn);
+        if (fen) {
+          novoGame.load(fen);
+        }
+
+        // Aplicar todos os movimentos até o movimento atual
+        const movimentosAteAgora = movimentosEsperados.slice(
+          0,
+          movimentoAtual + 1
+        );
+        for (const movimento of movimentosAteAgora) {
+          novoGame.move(movimento);
+        }
+
+        // Pegar o próximo movimento do sistema
+        const proximoMovimento = movimentosEsperados[movimentoAtual + 1];
+        console.log("Sistema:", proximoMovimento);
+
+        // Tentar fazer o movimento diretamente do PGN
+        try {
+          novoGame.move(proximoMovimento);
+          setGame(novoGame);
+          setMovimentoAtual(movimentoAtual + 1);
+          setFeedback("Sua vez de jogar!");
+        } catch (e) {
+          // Se falhar, tentar fazer o movimento usando a notação algébrica completa
+          const movimentosPossiveis = novoGame.moves({ verbose: true });
+          console.log("Movimentos possíveis:", movimentosPossiveis);
+
+          // Tentar encontrar o movimento que corresponde ao esperado
+          const movimentoEncontrado = movimentosPossiveis.find((m) => {
+            const mNormalizado = normalizarMovimento(m.san);
+            const proximoNormalizado = normalizarMovimento(proximoMovimento);
+            console.log("Comparando:", mNormalizado, "com", proximoNormalizado);
+            return mNormalizado === proximoNormalizado;
+          });
+
+          if (movimentoEncontrado) {
+            novoGame.move(movimentoEncontrado);
+            setGame(novoGame);
+            setMovimentoAtual(movimentoAtual + 1);
+            setFeedback("Sua vez de jogar!");
+          } else {
+            throw new Error("Movimento não encontrado");
+          }
+        }
+      } catch (error) {
+        console.error("Erro ao fazer movimento automático:", error);
+        setFeedback("Erro ao processar movimento. Tente novamente.");
+        setErro(true);
+      }
+    }
+  };
+
+  const normalizarMovimento = (mov: string) => {
+    return mov
+      .replace(/\+/g, "") // Remove checks
+      .replace(/#/g, "") // Remove checkmates
+      .replace(/=/g, "") // Remove promotions
+      .replace(/x/g, "") // Remove captures
+      .toLowerCase(); // Converte para minúsculo
   };
 
   const proximoExercicio = () => {
@@ -90,36 +159,6 @@ const ChessboardWithDnd = () => {
     if (exercicioAtual > 0) {
       setExercicioAtual(exercicioAtual - 1);
       carregarExercicio(exercicios[exercicioAtual - 1]);
-    }
-  };
-
-  const fazerMovimentoPreto = () => {
-    if (movimentoAtual < movimentosEsperados.length - 1) {
-      try {
-        // Criar um novo jogo e carregar a posição inicial
-        const novoGame = new Chess();
-        const fen = extrairFEN(exercicios[exercicioAtual].pgn);
-        if (fen) {
-          novoGame.load(fen);
-        }
-
-        // Aplicar os movimentos um por um
-        const movimentosAteAgora = movimentosEsperados.slice(
-          0,
-          movimentoAtual + 2
-        );
-        for (const movimento of movimentosAteAgora) {
-          novoGame.move(movimento);
-        }
-
-        setGame(novoGame);
-        setMovimentoAtual(movimentoAtual + 1);
-        setFeedback("Sua vez de jogar!");
-      } catch (error) {
-        console.error("Erro ao fazer movimento:", error);
-        setFeedback("Erro ao processar movimento. Tente novamente.");
-        setErro(true);
-      }
     }
   };
 
@@ -137,15 +176,48 @@ const ChessboardWithDnd = () => {
 
       // Verificar se o movimento corresponde ao esperado
       const movimentoAtualSan = move.san;
-      const movimentoEsperado = movimentosEsperados[movimentoAtual];
 
-      if (movimentoAtualSan === movimentoEsperado) {
+      // Calcular o índice do movimento esperado
+      // Se for o primeiro movimento (movimentoAtual === 0), usamos o índice 0
+      // Se não for o primeiro movimento, usamos movimentoAtual + 1 pois o movimento automático já foi feito
+      const indiceMovimentoEsperado =
+        movimentoAtual === 0 ? 0 : movimentoAtual + 1;
+      const movimentoEsperado = movimentosEsperados[indiceMovimentoEsperado];
+      console.log("Usuário:", movimentoAtualSan);
+      console.log("Movimento esperado:", movimentoEsperado);
+      console.log("Índice atual:", movimentoAtual);
+      console.log("Índice esperado:", indiceMovimentoEsperado);
+
+      if (!movimentoEsperado) {
+        console.error("Movimento esperado não encontrado");
+        return false;
+      }
+
+      // Normalizar os movimentos para comparação
+      const normalizarMovimento = (mov: string) => {
+        return mov
+          .replace(/\+/g, "") // Remove checks
+          .replace(/#/g, "") // Remove checkmates
+          .replace(/=/g, "") // Remove promotions
+          .replace(/x/g, "") // Remove captures
+          .toLowerCase(); // Converte para minúsculo
+      };
+
+      const movimentoAtualNormalizado = normalizarMovimento(movimentoAtualSan);
+      const movimentoEsperadoNormalizado =
+        normalizarMovimento(movimentoEsperado);
+
+      if (movimentoAtualNormalizado === movimentoEsperadoNormalizado) {
         // Movimento correto, atualizar o jogo real
         setGame(gameCopy);
         setErro(false);
         setMovimentoAtual(movimentoAtual + 1);
 
-        if (movimentoAtual === movimentosEsperados.length - 1) {
+        // Verificar se é o último movimento do usuário
+        const ehUltimoMovimentoUsuario =
+          indiceMovimentoEsperado === movimentosEsperados.length - 1;
+
+        if (ehUltimoMovimentoUsuario) {
           // Último movimento correto
           setFeedback("Parabéns! Você completou o exercício!");
           setTimeout(() => {
@@ -153,9 +225,9 @@ const ChessboardWithDnd = () => {
           }, 1500);
         } else {
           // Movimento correto, mas ainda não é o último
-          setFeedback("Bom movimento! Aguarde o movimento das pretas...");
-          // Fazer o movimento das pretas automaticamente
-          setTimeout(fazerMovimentoPreto, 1000);
+          setFeedback("Bom movimento! Aguarde o movimento do oponente...");
+          // Fazer o movimento automático do oponente
+          setTimeout(fazerMovimentoAutomatico, 1000);
         }
       } else {
         // Movimento incorreto, mas mantemos no tabuleiro
@@ -185,6 +257,18 @@ const ChessboardWithDnd = () => {
   // Determinar a orientação do tabuleiro baseado no primeiro lance
   const orientacaoTabuleiro = () => {
     return primeiroLanceNegras ? "black" : "white";
+  };
+
+  // Determinar de quem é a vez baseado no movimento atual e na cor do usuário
+  const vezDeQuem = () => {
+    const ehVezDoUsuario = movimentoAtual % 2 === 0;
+    return primeiroLanceNegras
+      ? ehVezDoUsuario
+        ? "Lance das pretas"
+        : "Lance das brancas"
+      : ehVezDoUsuario
+      ? "Lance das brancas"
+      : "Lance das pretas";
   };
 
   return (
@@ -228,15 +312,7 @@ const ChessboardWithDnd = () => {
           </button>
         </div>
         <div className="info">
-          <p>
-            {movimentoAtual % 2 === 0
-              ? primeiroLanceNegras
-                ? "Lance das pretas"
-                : "Lance das brancas"
-              : primeiroLanceNegras
-              ? "Lance das brancas"
-              : "Lance das pretas"}
-          </p>
+          <p>{vezDeQuem()}</p>
           {feedback && (
             <div className={`feedback ${erro ? "error" : "success"}`}>
               <p>{feedback}</p>
