@@ -90,7 +90,7 @@ const ChessboardWithDnd = () => {
           novoGame.load(fen);
         }
 
-        // Aplicar todos os movimentos até o movimento atual
+        // Aplicar todos os movimentos até o movimento atual (incluindo o movimento do usuário)
         const movimentosAteAgora = movimentosEsperados.slice(
           0,
           movimentoAtual + 1
@@ -100,14 +100,18 @@ const ChessboardWithDnd = () => {
         }
 
         // Pegar o próximo movimento do sistema
+        // Posições ímpares (1, 3, 5...) são respostas automáticas do sistema
         const proximoMovimento = movimentosEsperados[movimentoAtual + 1];
+        console.log("=== Debug de Movimento Automático ===");
         console.log("Sistema:", proximoMovimento);
+        console.log("Movimento atual:", movimentoAtual);
+        console.log("Todos os movimentos:", movimentosEsperados);
 
         // Tentar fazer o movimento diretamente do PGN
         try {
           novoGame.move(proximoMovimento);
           setGame(novoGame);
-          setMovimentoAtual(movimentoAtual + 1);
+          setMovimentoAtual(movimentoAtual + 2); // Incrementa em 2 pois já aplicamos o movimento do usuário
           setFeedback("Sua vez de jogar!");
         } catch (e) {
           // Se falhar, tentar fazer o movimento usando a notação algébrica completa
@@ -125,7 +129,7 @@ const ChessboardWithDnd = () => {
           if (movimentoEncontrado) {
             novoGame.move(movimentoEncontrado);
             setGame(novoGame);
-            setMovimentoAtual(movimentoAtual + 1);
+            setMovimentoAtual(movimentoAtual + 2); // Incrementa em 2 pois já aplicamos o movimento do usuário
             setFeedback("Sua vez de jogar!");
           } else {
             throw new Error("Movimento não encontrado");
@@ -178,15 +182,14 @@ const ChessboardWithDnd = () => {
       const movimentoAtualSan = move.san;
 
       // Calcular o índice do movimento esperado
-      // Se for o primeiro movimento (movimentoAtual === 0), usamos o índice 0
-      // Se não for o primeiro movimento, usamos movimentoAtual + 1 pois o movimento automático já foi feito
-      const indiceMovimentoEsperado =
-        movimentoAtual === 0 ? 0 : movimentoAtual + 1;
+      // Posições pares (0, 2, 4...) são lances do usuário
+      const indiceMovimentoEsperado = movimentoAtual;
       const movimentoEsperado = movimentosEsperados[indiceMovimentoEsperado];
+      console.log("=== Debug de Movimentos ===");
       console.log("Usuário:", movimentoAtualSan);
       console.log("Movimento esperado:", movimentoEsperado);
       console.log("Índice atual:", movimentoAtual);
-      console.log("Índice esperado:", indiceMovimentoEsperado);
+      console.log("Todos os movimentos:", movimentosEsperados);
 
       if (!movimentoEsperado) {
         console.error("Movimento esperado não encontrado");
