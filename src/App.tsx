@@ -156,6 +156,10 @@ const ChessboardWithDnd = () => {
     if (exercicioAtual < exercicios.length - 1) {
       setExercicioAtual(exercicioAtual + 1);
       carregarExercicio(exercicios[exercicioAtual + 1]);
+    } else {
+      // Voltar para o primeiro exercício
+      setExercicioAtual(0);
+      carregarExercicio(exercicios[0]);
     }
   };
 

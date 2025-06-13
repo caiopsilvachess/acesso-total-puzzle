@@ -75,21 +75,4 @@ export const exercicios: Exercicio[] = [
 
 1. Rhe1 c5 2. d5 exd5 3. cxd5 *`,
   },
-  {
-    titulo: "Profilaxia",
-    nivel: "**",
-    white: "Firouzja, Alireza",
-    black: "Fedoseev, Vladimir",
-    pgn: `[Event "?"]
-[Site "?"]
-[Date "????.??.??"]
-[Round "?"]
-[White "Firouzja, Alireza"]
-[Black "Fedoseev, Vladimir"]
-[Result "*"]
-[SetUp "1"]
-[FEN "2r1r1k1/p2n1pp1/bpp1p1np/4P3/2PPB1P1/P4NB1/3K1P1P/2R4R w - - 0 1"]
-
-1. Rhe1 c5 2. d5 exd5 3. cxd5 *`,
-  },
 ];
