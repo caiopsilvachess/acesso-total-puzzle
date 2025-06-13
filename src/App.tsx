@@ -12,6 +12,7 @@ const ChessboardWithDnd = () => {
   const [feedback, setFeedback] = useState<string>("");
   const [primeiroLanceNegras, setPrimeiroLanceNegras] = useState(false);
   const [erro, setErro] = useState(false);
+  const [casaErro, setCasaErro] = useState<string | null>(null);
 
   useEffect(() => {
     carregarExercicio(exercicios[0]);
@@ -30,10 +31,20 @@ const ChessboardWithDnd = () => {
     );
     if (!linhaMovimentos) return [];
 
-    // Separar os movimentos
-    return linhaMovimentos
-      .split(" ")
-      .filter((m) => m.trim() !== "" && !m.endsWith(".") && m !== "*");
+    // Separar os movimentos e remover números e pontos
+    const movimentos = linhaMovimentos.split(" ").filter((m) => {
+      const movimento = m.trim();
+      return (
+        movimento !== "" &&
+        !movimento.endsWith(".") &&
+        movimento !== "*" &&
+        !movimento.match(/^\d+\.\.\.$/) &&
+        !movimento.match(/^\d+\.$/)
+      );
+    });
+
+    console.log("Movimentos extraídos:", movimentos);
+    return movimentos;
   };
 
   const verificarPrimeiroLance = (pgn: string): boolean => {
@@ -84,14 +95,31 @@ const ChessboardWithDnd = () => {
 
   const fazerMovimentoPreto = () => {
     if (movimentoAtual < movimentosEsperados.length - 1) {
-      // Criar um novo jogo e carregar o PGN completo até o movimento atual + 1
-      const novoGame = new Chess();
-      const pgnCompleto = movimentosEsperados
-        .slice(0, movimentoAtual + 2)
-        .join(" ");
-      novoGame.loadPgn(pgnCompleto);
-      setGame(novoGame);
-      setMovimentoAtual(movimentoAtual + 2);
+      try {
+        // Criar um novo jogo e carregar a posição inicial
+        const novoGame = new Chess();
+        const fen = extrairFEN(exercicios[exercicioAtual].pgn);
+        if (fen) {
+          novoGame.load(fen);
+        }
+
+        // Aplicar os movimentos um por um
+        const movimentosAteAgora = movimentosEsperados.slice(
+          0,
+          movimentoAtual + 2
+        );
+        for (const movimento of movimentosAteAgora) {
+          novoGame.move(movimento);
+        }
+
+        setGame(novoGame);
+        setMovimentoAtual(movimentoAtual + 1);
+        setFeedback("Sua vez de jogar!");
+      } catch (error) {
+        console.error("Erro ao fazer movimento:", error);
+        setFeedback("Erro ao processar movimento. Tente novamente.");
+        setErro(true);
+      }
     }
   };
 
@@ -115,6 +143,7 @@ const ChessboardWithDnd = () => {
         // Movimento correto, atualizar o jogo real
         setGame(gameCopy);
         setErro(false);
+        setMovimentoAtual(movimentoAtual + 1);
 
         if (movimentoAtual === movimentosEsperados.length - 1) {
           // Último movimento correto
@@ -131,6 +160,7 @@ const ChessboardWithDnd = () => {
       } else {
         // Movimento incorreto, mas mantemos no tabuleiro
         setGame(gameCopy);
+        setCasaErro(targetSquare);
         setTimeout(() => {
           setFeedback("Tente novamente! Movimento incorreto.");
           setErro(true);
@@ -140,7 +170,7 @@ const ChessboardWithDnd = () => {
       return true;
     } catch (e) {
       setTimeout(() => {
-        setFeedback("Calma veloz! Ainda não é sua vez.");
+        setFeedback("Calma veloz! Jogada ilegal.");
         setErro(true);
       }, 100);
       return false;
@@ -149,19 +179,12 @@ const ChessboardWithDnd = () => {
 
   const tentarNovamente = () => {
     carregarExercicio(exercicios[exercicioAtual]);
+    setCasaErro(null);
   };
 
-  // Determinar a orientação do tabuleiro baseado no primeiro lance e movimento atual
+  // Determinar a orientação do tabuleiro baseado no primeiro lance
   const orientacaoTabuleiro = () => {
-    // Se o primeiro lance é das negras, invertemos a lógica
-    const movimentoPar = movimentoAtual % 2 === 0;
-    return primeiroLanceNegras
-      ? movimentoPar
-        ? "black"
-        : "white"
-      : movimentoPar
-      ? "white"
-      : "black";
+    return primeiroLanceNegras ? "black" : "white";
   };
 
   return (
@@ -184,6 +207,13 @@ const ChessboardWithDnd = () => {
             boardWidth={400}
             onPieceDrop={onDrop}
             boardOrientation={orientacaoTabuleiro()}
+            customSquareStyles={{
+              ...(casaErro && {
+                [casaErro]: {
+                  backgroundColor: "rgba(255, 0, 0, 0.7)",
+                },
+              }),
+            }}
           />
         </div>
         <div className="controls">
@@ -210,7 +240,7 @@ const ChessboardWithDnd = () => {
           {feedback && (
             <div className={`feedback ${erro ? "error" : "success"}`}>
               <p>{feedback}</p>
-              {erro && (
+              {erro && casaErro && (
                 <button
                   className="try-again"
                   onClick={tentarNovamente}
