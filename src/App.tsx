@@ -361,7 +361,11 @@ const ChessboardWithDnd = () => {
                 (acc, square) => ({
                   ...acc,
                   [square]: {
-                    backgroundColor: "rgba(0, 255, 0, 0.4)",
+                    background: `radial-gradient(circle, ${
+                      game.get(pecaSelecionada!)?.color === "w"
+                        ? "rgba(255, 255, 255, 0.4)"
+                        : "rgba(0, 0, 0, 0.4)"
+                    } 25%, transparent 25%)`,
                   },
                 }),
                 {}
