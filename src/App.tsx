@@ -103,6 +103,17 @@ const ChessboardWithDnd = () => {
   return (
     <div className="App">
       <main>
+        <div className="info">
+          <p>
+            Tema: {exercicios[exercicioAtual].titulo} / Nível:{" "}
+            {exercicios[exercicioAtual].nivel} - Exercício {exercicioAtual + 1}{" "}
+            de {exercicios.length}
+          </p>
+          <p className="jogadores">
+            {exercicios[exercicioAtual].white} vs{" "}
+            {exercicios[exercicioAtual].black}
+          </p>
+        </div>
         <div className="chessboard-container">
           <Chessboard
             position={game.fen()}
@@ -123,10 +134,6 @@ const ChessboardWithDnd = () => {
           </button>
         </div>
         <div className="info">
-          <p>
-            {exercicios[exercicioAtual].titulo} - Exercício {exercicioAtual + 1}{" "}
-            de {exercicios.length}
-          </p>
           <p>
             Movimento {Math.floor(movimentoAtual / 2) + 1} de{" "}
             {Math.ceil(movimentosEsperados.length / 2)}
