@@ -100,16 +100,28 @@
 
 .feedback {
   font-size: 14px;
-  padding: 4px 8px;
+  padding: 0 8px;
   border-radius: 4px;
   margin: 0;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .feedback p {
   margin: 0;
+  padding: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 1;
+  text-align: center;
+  width: 100%;
+  font-size: 14px;
+  font-weight: normal;
 }
 
 .feedback.error {
@@ -125,6 +137,8 @@
 .feedback.info {
   background-color: rgba(0, 0, 0, 0.05);
   color: #333;
+  margin: 0;
+  padding: 0 8px;
 }
 
 .buttons-container {
@@ -164,6 +178,10 @@
 
 .control-button.error-button:hover:not(:disabled) {
   background-color: rgba(255, 0, 0, 0.2);
+}
+
+.control-button.error-button svg {
+  color: #ff0000;
 }
 
 .control-button svg {
