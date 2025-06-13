@@ -11,6 +11,7 @@ const ChessboardWithDnd = () => {
   const [movimentoAtual, setMovimentoAtual] = useState(0);
   const [feedback, setFeedback] = useState<string>("");
   const [primeiroLanceNegras, setPrimeiroLanceNegras] = useState(false);
+  const [erro, setErro] = useState(false);
 
   useEffect(() => {
     carregarExercicio(exercicios[0]);
@@ -113,6 +114,7 @@ const ChessboardWithDnd = () => {
       if (movimentoAtualSan === movimentoEsperado) {
         // Movimento correto, atualizar o jogo real
         setGame(gameCopy);
+        setErro(false);
 
         if (movimentoAtual === movimentosEsperados.length - 1) {
           // Último movimento correto
@@ -127,15 +129,26 @@ const ChessboardWithDnd = () => {
           setTimeout(fazerMovimentoPreto, 1000);
         }
       } else {
-        setFeedback("Tente novamente! Movimento incorreto.");
-        return false; // Reverte o movimento incorreto
+        // Movimento incorreto, mas mantemos no tabuleiro
+        setGame(gameCopy);
+        setTimeout(() => {
+          setFeedback("Tente novamente! Movimento incorreto.");
+          setErro(true);
+        }, 100);
       }
 
       return true;
     } catch (e) {
-      setFeedback("Tente novamente! Movimento incorreto.");
+      setTimeout(() => {
+        setFeedback("Calma veloz! Ainda não é sua vez.");
+        setErro(true);
+      }, 100);
       return false;
     }
+  };
+
+  const tentarNovamente = () => {
+    carregarExercicio(exercicios[exercicioAtual]);
   };
 
   // Determinar a orientação do tabuleiro baseado no primeiro lance e movimento atual
@@ -158,12 +171,8 @@ const ChessboardWithDnd = () => {
           <p className="tema">Tema: {exercicios[exercicioAtual].titulo}</p>
           <p className="nivel">Nível: {exercicios[exercicioAtual].nivel}</p>
           <p className="jogadores">
-            <span className="brancas">
-              Brancas: {exercicios[exercicioAtual].white}
-            </span>
-            <span className="pretas">
-              Pretas: {exercicios[exercicioAtual].black}
-            </span>
+            <span className="brancas">{exercicios[exercicioAtual].white}</span>
+            <span className="pretas">{exercicios[exercicioAtual].black}</span>
           </p>
           <p className="exercicio">
             Exercício {exercicioAtual + 1} de {exercicios.length}
@@ -190,19 +199,27 @@ const ChessboardWithDnd = () => {
         </div>
         <div className="info">
           <p>
-            Movimento {Math.floor(movimentoAtual / 2) + 1} de{" "}
-            {Math.ceil(movimentosEsperados.length / 2)}
+            {movimentoAtual % 2 === 0
+              ? primeiroLanceNegras
+                ? "Lance das pretas"
+                : "Lance das brancas"
+              : primeiroLanceNegras
+              ? "Lance das brancas"
+              : "Lance das pretas"}
           </p>
           {feedback && (
-            <p
-              className={
-                feedback.includes("Parabéns")
-                  ? "feedback-success"
-                  : "feedback-error"
-              }
-            >
-              {feedback}
-            </p>
+            <div className={`feedback ${erro ? "error" : "success"}`}>
+              <p>{feedback}</p>
+              {erro && (
+                <button
+                  className="try-again"
+                  onClick={tentarNovamente}
+                  title="Tentar Novamente"
+                >
+                  Tentar Novamente
+                </button>
+              )}
+            </div>
           )}
         </div>
       </main>
