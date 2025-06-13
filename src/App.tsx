@@ -10,21 +10,59 @@ const ChessboardWithDnd = () => {
   const [movimentosEsperados, setMovimentosEsperados] = useState<string[]>([]);
   const [movimentoAtual, setMovimentoAtual] = useState(0);
   const [feedback, setFeedback] = useState<string>("");
+  const [primeiroLanceNegras, setPrimeiroLanceNegras] = useState(false);
 
   useEffect(() => {
     carregarExercicio(exercicios[0]);
   }, []);
 
-  const carregarExercicio = (exercicio: Exercicio) => {
-    const novoGame = new Chess();
-    setGame(novoGame);
+  const extrairFEN = (pgn: string): string | null => {
+    const fenMatch = pgn.match(/\[FEN "([^"]+)"\]/);
+    return fenMatch ? fenMatch[1] : null;
+  };
 
-    // Separar os movimentos do PGN
-    const movimentos = exercicio.pgn
+  const extrairMovimentos = (pgn: string): string[] => {
+    // Encontrar a linha que começa com o primeiro movimento
+    const linhas = pgn.split("\n");
+    const linhaMovimentos = linhas.find((linha) =>
+      linha.trim().match(/^\d+\./)
+    );
+    if (!linhaMovimentos) return [];
+
+    // Separar os movimentos
+    return linhaMovimentos
       .split(" ")
       .filter((m) => m.trim() !== "" && !m.endsWith(".") && m !== "*");
+  };
 
+  const verificarPrimeiroLance = (pgn: string): boolean => {
+    const linhas = pgn.split("\n");
+    const linhaMovimentos = linhas.find((linha) =>
+      linha.trim().match(/^\d+\./)
+    );
+    if (!linhaMovimentos) return false;
+
+    // Se o primeiro movimento começa com "1...", é lance das negras
+    return linhaMovimentos.trim().startsWith("1...");
+  };
+
+  const carregarExercicio = (exercicio: Exercicio) => {
+    const novoGame = new Chess();
+
+    // Extrair FEN e carregar posição inicial
+    const fen = extrairFEN(exercicio.pgn);
+    if (fen) {
+      novoGame.load(fen);
+    }
+
+    // Extrair movimentos do PGN
+    const movimentos = extrairMovimentos(exercicio.pgn);
     setMovimentosEsperados(movimentos);
+
+    // Verificar se o primeiro lance é das negras
+    setPrimeiroLanceNegras(verificarPrimeiroLance(exercicio.pgn));
+
+    setGame(novoGame);
     setMovimentoAtual(0);
     setFeedback("");
   };
@@ -100,18 +138,35 @@ const ChessboardWithDnd = () => {
     }
   };
 
+  // Determinar a orientação do tabuleiro baseado no primeiro lance e movimento atual
+  const orientacaoTabuleiro = () => {
+    // Se o primeiro lance é das negras, invertemos a lógica
+    const movimentoPar = movimentoAtual % 2 === 0;
+    return primeiroLanceNegras
+      ? movimentoPar
+        ? "black"
+        : "white"
+      : movimentoPar
+      ? "white"
+      : "black";
+  };
+
   return (
     <div className="App">
       <main>
         <div className="info">
-          <p>
-            Tema: {exercicios[exercicioAtual].titulo} / Nível:{" "}
-            {exercicios[exercicioAtual].nivel} - Exercício {exercicioAtual + 1}{" "}
-            de {exercicios.length}
-          </p>
+          <p className="tema">Tema: {exercicios[exercicioAtual].titulo}</p>
+          <p className="nivel">Nível: {exercicios[exercicioAtual].nivel}</p>
           <p className="jogadores">
-            {exercicios[exercicioAtual].white} vs{" "}
-            {exercicios[exercicioAtual].black}
+            <span className="brancas">
+              Brancas: {exercicios[exercicioAtual].white}
+            </span>
+            <span className="pretas">
+              Pretas: {exercicios[exercicioAtual].black}
+            </span>
+          </p>
+          <p className="exercicio">
+            Exercício {exercicioAtual + 1} de {exercicios.length}
           </p>
         </div>
         <div className="chessboard-container">
@@ -119,7 +174,7 @@ const ChessboardWithDnd = () => {
             position={game.fen()}
             boardWidth={400}
             onPieceDrop={onDrop}
-            boardOrientation="white"
+            boardOrientation={orientacaoTabuleiro()}
           />
         </div>
         <div className="controls">
