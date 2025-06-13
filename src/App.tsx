@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Chess } from "chess.js";
+import { Chess, Square } from "chess.js";
 import { Chessboard } from "react-chessboard";
 import { exercicios, Exercicio } from "./exercicios/exercicios";
 import "./App.css";
@@ -13,6 +13,8 @@ const ChessboardWithDnd = () => {
   const [primeiroLanceNegras, setPrimeiroLanceNegras] = useState(false);
   const [erro, setErro] = useState(false);
   const [casaErro, setCasaErro] = useState<string | null>(null);
+  const [pecaSelecionada, setPecaSelecionada] = useState<Square | null>(null);
+  const [movimentosPossiveis, setMovimentosPossiveis] = useState<Square[]>([]);
 
   useEffect(() => {
     carregarExercicio(exercicios[0]);
@@ -170,7 +172,7 @@ const ChessboardWithDnd = () => {
     }
   };
 
-  const onDrop = (sourceSquare: string, targetSquare: string) => {
+  const onDrop = (sourceSquare: Square, targetSquare: Square) => {
     try {
       // Criar uma cópia do jogo atual para testar o movimento
       const gameCopy = new Chess(game.fen());
@@ -239,7 +241,7 @@ const ChessboardWithDnd = () => {
       } else {
         // Movimento incorreto, mas mantemos no tabuleiro
         setGame(gameCopy);
-        setCasaErro(targetSquare);
+        setCasaErro(targetSquare.toString());
         setTimeout(() => {
           setFeedback("Movimento incorreto.");
           setErro(true);
@@ -278,6 +280,52 @@ const ChessboardWithDnd = () => {
       : "Lance das pretas";
   };
 
+  const onSquareClick = (square: Square) => {
+    // Se não houver peça selecionada e houver uma peça no quadrado clicado
+    if (!pecaSelecionada && game.get(square)) {
+      const movimentos = game.moves({ square, verbose: true });
+      if (movimentos.length > 0) {
+        setPecaSelecionada(square);
+        setMovimentosPossiveis(movimentos.map((m) => m.to as Square));
+      }
+      return;
+    }
+
+    // Se já houver uma peça selecionada
+    if (pecaSelecionada) {
+      // Se clicar na mesma peça, deseleciona
+      if (square === pecaSelecionada) {
+        setPecaSelecionada(null);
+        setMovimentosPossiveis([]);
+        return;
+      }
+
+      // Se clicar em um movimento possível
+      if (movimentosPossiveis.includes(square)) {
+        onDrop(pecaSelecionada, square);
+        setPecaSelecionada(null);
+        setMovimentosPossiveis([]);
+        return;
+      }
+
+      // Se clicar em outra peça da mesma cor
+      const pecaAtual = game.get(pecaSelecionada);
+      const pecaClicada = game.get(square);
+      if (pecaClicada && pecaAtual && pecaClicada.color === pecaAtual.color) {
+        const movimentos = game.moves({ square, verbose: true });
+        if (movimentos.length > 0) {
+          setPecaSelecionada(square);
+          setMovimentosPossiveis(movimentos.map((m) => m.to as Square));
+        }
+        return;
+      }
+
+      // Se clicar em qualquer outro lugar, deseleciona
+      setPecaSelecionada(null);
+      setMovimentosPossiveis([]);
+    }
+  };
+
   return (
     <div className="App">
       <main>
@@ -296,6 +344,7 @@ const ChessboardWithDnd = () => {
             position={game.fen()}
             boardWidth={400}
             onPieceDrop={onDrop}
+            onSquareClick={onSquareClick}
             boardOrientation={orientacaoTabuleiro()}
             customSquareStyles={{
               ...(casaErro && {
@@ -303,6 +352,20 @@ const ChessboardWithDnd = () => {
                   backgroundColor: "rgba(255, 0, 0, 0.7)",
                 },
               }),
+              ...(pecaSelecionada && {
+                [pecaSelecionada]: {
+                  backgroundColor: "rgba(255, 255, 0, 0.4)",
+                },
+              }),
+              ...movimentosPossiveis.reduce(
+                (acc, square) => ({
+                  ...acc,
+                  [square]: {
+                    backgroundColor: "rgba(0, 255, 0, 0.4)",
+                  },
+                }),
+                {}
+              ),
             }}
           />
         </div>
