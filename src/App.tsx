@@ -283,14 +283,13 @@ const ChessboardWithDnd = () => {
       <main>
         <div className="info">
           <p className="tema">Tema: {exercicios[exercicioAtual].titulo}</p>
-          <p className="jogadores">
-            <span className="brancas">{exercicios[exercicioAtual].white}</span>
-            <span className="pretas">{exercicios[exercicioAtual].black}</span>
-          </p>
           <p className="exercicio">
             Exercício: {exercicioAtual + 1} de {exercicios.length} - Nível:{" "}
             {exercicios[exercicioAtual].nivel}
           </p>
+        </div>
+        <div className="jogador-nome pretas">
+          {exercicios[exercicioAtual].black}
         </div>
         <div className="chessboard-container">
           <Chessboard
@@ -307,6 +306,9 @@ const ChessboardWithDnd = () => {
             }}
           />
         </div>
+        <div className="jogador-nome brancas">
+          {exercicios[exercicioAtual].white}
+        </div>
         <div className="controls">
           <button onClick={exercicioAnterior} disabled={exercicioAtual === 0}>
             Anterior
@@ -318,7 +320,29 @@ const ChessboardWithDnd = () => {
             Próximo
           </button>
         </div>
-        <div className="info">
+        {feedback && (
+          <div
+            className={`feedback ${
+              erro
+                ? "error"
+                : feedback.includes("Parabéns")
+                ? "success"
+                : "info"
+            }`}
+          >
+            <p>{feedback}</p>
+            {erro && casaErro && (
+              <button
+                className="try-again"
+                onClick={tentarNovamente}
+                title="Tentar Novamente"
+              >
+                Tentar Novamente
+              </button>
+            )}
+          </div>
+        )}
+        {/* <div className="info">
           <p>{vezDeQuem()}</p>
           {feedback && (
             <div
@@ -342,7 +366,7 @@ const ChessboardWithDnd = () => {
               )}
             </div>
           )}
-        </div>
+        </div> */}
       </main>
     </div>
   );
