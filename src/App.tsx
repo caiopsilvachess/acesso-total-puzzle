@@ -283,13 +283,13 @@ const ChessboardWithDnd = () => {
       <main>
         <div className="info">
           <p className="tema">Tema: {exercicios[exercicioAtual].titulo}</p>
-          <p className="nivel">Nível: {exercicios[exercicioAtual].nivel}</p>
           <p className="jogadores">
             <span className="brancas">{exercicios[exercicioAtual].white}</span>
             <span className="pretas">{exercicios[exercicioAtual].black}</span>
           </p>
           <p className="exercicio">
-            Exercício {exercicioAtual + 1} de {exercicios.length}
+            Exercício: {exercicioAtual + 1} de {exercicios.length} - Nível:{" "}
+            {exercicios[exercicioAtual].nivel}
           </p>
         </div>
         <div className="chessboard-container">

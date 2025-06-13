@@ -114,8 +114,9 @@
   font-size: 1.2em;
 }
 
-.info .nivel {
+.info .tema .nivel {
   color: #666;
+  font-weight: normal;
 }
 
 .info .jogadores {
@@ -145,6 +146,7 @@
 .info .exercicio {
   color: #666;
   font-style: italic;
+  margin: 5px 0;
 }
 
 .feedback-success {
@@ -166,6 +168,8 @@
   padding: 10px;
   border-radius: 4px;
   margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .feedback.error {
