@@ -83,7 +83,7 @@
 }
 
 .controls {
-  margin: 20px 0;
+  margin: 10px 0;
   display: flex;
   gap: 10px;
   width: 100%;
@@ -120,10 +120,7 @@
   flex-direction: column;
   gap: 8px;
   padding: 10px;
-  background-color: white;
-  border-radius: 8px;
-  margin: 10px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
 }
 
 .info p {
@@ -146,13 +143,11 @@
 .feedback-success {
   color: #2e7d32;
   font-weight: bold;
-  margin-top: 10px;
 }
 
 .feedback-error {
   color: #c62828;
   font-weight: bold;
-  margin-top: 10px;
 }
 
 .feedback {
@@ -161,7 +156,6 @@
   gap: 10px;
   padding: 10px;
   border-radius: 4px;
-  margin-top: 10px;
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -169,13 +163,11 @@
 .feedback.error {
   background-color: #ffebee;
   border: 1px solid #ffcdd2;
-  margin: 10px 0;
   margin-left: 20px;
   margin-right: 20px;
 }
 
 .feedback.success {
-  margin: 10px 0;
   background-color: #e8f5e9;
   border: 1px solid #c8e6c9;
   color: #2e7d32;

@@ -15,6 +15,7 @@ const ChessboardWithDnd = () => {
   const [casaErro, setCasaErro] = useState<string | null>(null);
   const [pecaSelecionada, setPecaSelecionada] = useState<Square | null>(null);
   const [movimentosPossiveis, setMovimentosPossiveis] = useState<Square[]>([]);
+  const [casaSucesso, setCasaSucesso] = useState<string | null>(null);
 
   useEffect(() => {
     carregarExercicio(exercicios[0]);
@@ -229,9 +230,14 @@ const ChessboardWithDnd = () => {
         if (ehUltimoMovimentoUsuario) {
           // Último movimento correto
           setFeedback("Parabéns! Você completou o exercício!");
+          // Adicionar um pequeno delay antes de mostrar o verde
           setTimeout(() => {
-            proximoExercicio();
-          }, 1500);
+            setCasaSucesso(targetSquare);
+            setTimeout(() => {
+              setCasaSucesso(null);
+              proximoExercicio();
+            }, 1500);
+          }, 300);
         } else {
           // Movimento correto, mas ainda não é o último
           setFeedback("Boa! Mas ainda não acabou...");
@@ -241,7 +247,7 @@ const ChessboardWithDnd = () => {
       } else {
         // Movimento incorreto, mas mantemos no tabuleiro
         setGame(gameCopy);
-        setCasaErro(targetSquare.toString());
+        setCasaErro(targetSquare);
         setTimeout(() => {
           setFeedback("Movimento incorreto.");
           setErro(true);
@@ -255,6 +261,19 @@ const ChessboardWithDnd = () => {
         setErro(true);
       }, 100);
       return false;
+    }
+  };
+
+  const onDropEnd = (sourceSquare: Square, targetSquare: Square) => {
+    // Verificar se é o último movimento do usuário
+    const ehUltimoMovimentoUsuario =
+      movimentoAtual === movimentosEsperados.length - 1;
+
+    if (ehUltimoMovimentoUsuario) {
+      setCasaSucesso(targetSquare);
+      setTimeout(() => {
+        setCasaSucesso(null);
+      }, 1500);
     }
   };
 
@@ -352,6 +371,11 @@ const ChessboardWithDnd = () => {
                   backgroundColor: "rgba(255, 0, 0, 0.7)",
                 },
               }),
+              ...(casaSucesso && {
+                [casaSucesso]: {
+                  backgroundColor: "rgba(0, 255, 0, 0.4)",
+                },
+              }),
               ...(pecaSelecionada && {
                 [pecaSelecionada]: {
                   backgroundColor: "rgba(255, 255, 0, 0.4)",
@@ -388,7 +412,6 @@ const ChessboardWithDnd = () => {
           </button>
         </div>
         <div className="info">
-          <p>{vezDeQuem()}</p>
           {feedback && (
             <div
               className={`feedback ${
