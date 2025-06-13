@@ -84,12 +84,53 @@
 
 .controls {
   display: flex;
-  justify-content: flex-end;
-  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
   padding: 8px;
   padding-top: 0;
   max-width: 400px;
   margin: 0 auto;
+}
+
+.feedback-container {
+  flex: 1;
+  min-width: 0;
+}
+
+.feedback {
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin: 0;
+}
+
+.feedback p {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.feedback.error {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: #ff0000;
+}
+
+.feedback.success {
+  background-color: rgba(0, 255, 0, 0.1);
+  color: #00aa00;
+}
+
+.feedback.info {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #333;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 .control-button {
@@ -102,16 +143,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s;
+  transition: all 0.2s;
+  padding: 0;
 }
 
 .control-button:hover:not(:disabled) {
   background-color: #e0e0e0;
+  transform: scale(1.05);
 }
 
 .control-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.control-button.error-button {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: #ff0000;
+}
+
+.control-button.error-button:hover:not(:disabled) {
+  background-color: rgba(255, 0, 0, 0.2);
 }
 
 .control-button svg {
@@ -153,42 +205,6 @@
 .feedback-error {
   color: #c62828;
   font-weight: bold;
-}
-
-.feedback {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  border-radius: 4px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-.feedback.error {
-  background-color: #ffebee;
-  border: 1px solid #ffcdd2;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-.feedback.success {
-  background-color: #e8f5e9;
-  border: 1px solid #c8e6c9;
-  color: #2e7d32;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-.feedback.info {
-  background-color: #e3f2fd;
-  border: 1px solid #bbdefb;
-  color: #1976d2;
-}
-
-.feedback p {
-  margin: 0;
-  flex-grow: 1;
 }
 
 .try-again {
