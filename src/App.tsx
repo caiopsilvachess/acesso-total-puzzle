@@ -320,29 +320,7 @@ const ChessboardWithDnd = () => {
             Próximo
           </button>
         </div>
-        {feedback && (
-          <div
-            className={`feedback ${
-              erro
-                ? "error"
-                : feedback.includes("Parabéns")
-                ? "success"
-                : "info"
-            }`}
-          >
-            <p>{feedback}</p>
-            {erro && casaErro && (
-              <button
-                className="try-again"
-                onClick={tentarNovamente}
-                title="Tentar Novamente"
-              >
-                Tentar Novamente
-              </button>
-            )}
-          </div>
-        )}
-        {/* <div className="info">
+        <div className="info">
           <p>{vezDeQuem()}</p>
           {feedback && (
             <div
@@ -366,7 +344,7 @@ const ChessboardWithDnd = () => {
               )}
             </div>
           )}
-        </div> */}
+        </div>
       </main>
     </div>
   );
