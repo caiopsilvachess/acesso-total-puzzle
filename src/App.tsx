@@ -228,7 +228,7 @@ const ChessboardWithDnd = () => {
           }, 1500);
         } else {
           // Movimento correto, mas ainda não é o último
-          setFeedback("Bom movimento! Aguarde o movimento do oponente...");
+          setFeedback("Boa! Mas ainda não acabou...");
           // Fazer o movimento automático do oponente
           setTimeout(fazerMovimentoAutomatico, 1000);
         }
@@ -237,7 +237,7 @@ const ChessboardWithDnd = () => {
         setGame(gameCopy);
         setCasaErro(targetSquare);
         setTimeout(() => {
-          setFeedback("Tente novamente! Movimento incorreto.");
+          setFeedback("Movimento incorreto.");
           setErro(true);
         }, 100);
       }
@@ -317,7 +317,15 @@ const ChessboardWithDnd = () => {
         <div className="info">
           <p>{vezDeQuem()}</p>
           {feedback && (
-            <div className={`feedback ${erro ? "error" : "success"}`}>
+            <div
+              className={`feedback ${
+                erro
+                  ? "error"
+                  : feedback.includes("Parabéns")
+                  ? "success"
+                  : "info"
+              }`}
+            >
               <p>{feedback}</p>
               {erro && casaErro && (
                 <button
