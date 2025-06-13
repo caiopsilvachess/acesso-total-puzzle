@@ -83,35 +83,40 @@
 }
 
 .controls {
-  margin: 10px 0;
   display: flex;
-  gap: 10px;
-  width: 100%;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 8px;
+  padding-top: 0;
   max-width: 400px;
-  justify-content: center;
-  flex-wrap: wrap;
+  margin: 0 auto;
 }
 
-.controls button {
-  margin: 0 10px;
-  padding: 8px 16px;
-  font-size: 16px;
-  cursor: pointer;
+.control-button {
+  width: 40px;
+  height: 40px;
   border: none;
-  border-radius: 4px;
-  background-color: #2f74ab;
-  color: white;
-  transition: background-color 0.3s;
-  min-width: 120px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
 }
 
-.controls button:hover {
-  background-color: #357abd;
+.control-button:hover:not(:disabled) {
+  background-color: #e0e0e0;
 }
 
-.controls button:disabled {
-  cursor: not-allowed;
+.control-button:disabled {
   opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.control-button svg {
+  width: 24px;
+  height: 24px;
 }
 
 .info {
