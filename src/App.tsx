@@ -309,13 +309,13 @@ const ChessboardWithDnd = () => {
         </div>
         <div className="controls">
           <button onClick={exercicioAnterior} disabled={exercicioAtual === 0}>
-            Exercício Anterior
+            Anterior
           </button>
           <button
             onClick={proximoExercicio}
             disabled={exercicioAtual === exercicios.length - 1}
           >
-            Próximo Exercício
+            Próximo
           </button>
         </div>
         <div className="info">
