@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/acesso-total-puzzle/static/css/main.4b9ca044.css",
-    "main.js": "/acesso-total-puzzle/static/js/main.0f7c9c9d.js",
+    "main.css": "/acesso-total-puzzle/static/css/main.e017fd14.css",
+    "main.js": "/acesso-total-puzzle/static/js/main.1b5f4b2c.js",
     "static/js/453.cb9254d6.chunk.js": "/acesso-total-puzzle/static/js/453.cb9254d6.chunk.js",
     "index.html": "/acesso-total-puzzle/index.html",
-    "main.4b9ca044.css.map": "/acesso-total-puzzle/static/css/main.4b9ca044.css.map",
-    "main.0f7c9c9d.js.map": "/acesso-total-puzzle/static/js/main.0f7c9c9d.js.map",
+    "main.e017fd14.css.map": "/acesso-total-puzzle/static/css/main.e017fd14.css.map",
+    "main.1b5f4b2c.js.map": "/acesso-total-puzzle/static/js/main.1b5f4b2c.js.map",
     "453.cb9254d6.chunk.js.map": "/acesso-total-puzzle/static/js/453.cb9254d6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4b9ca044.css",
-    "static/js/main.0f7c9c9d.js"
+    "static/css/main.e017fd14.css",
+    "static/js/main.1b5f4b2c.js"
   ]
 }
