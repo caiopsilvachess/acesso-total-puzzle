@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Chess, Square } from "chess.js";
 import { Chessboard } from "react-chessboard";
 import { exercicios, Exercicio } from "./exercicios/exercicios";
 import { ReactComponent as RefreshIcon } from "./icons/refresh.svg";
+import { extrairFEN, extrairMovimentos, verificarPrimeiroLance } from "./utils";
 import "./App.css";
 
 const ChessboardWithDnd = () => {
@@ -18,55 +19,12 @@ const ChessboardWithDnd = () => {
   const [movimentosPossiveis, setMovimentosPossiveis] = useState<Square[]>([]);
   const [casaSucesso, setCasaSucesso] = useState<string | null>(null);
 
-  useEffect(() => {
-    carregarExercicio(exercicios[0]);
-  }, []);
-
-  const extrairFEN = (pgn: string): string | null => {
-    const fenMatch = pgn.match(/\[FEN "([^"]+)"\]/);
-    return fenMatch ? fenMatch[1] : null;
-  };
-
-  const extrairMovimentos = (pgn: string): string[] => {
-    // Encontrar a linha que começa com o primeiro movimento
-    const linhas = pgn.split("\n");
-    const linhaMovimentos = linhas.find((linha) =>
-      linha.trim().match(/^\d+\./)
-    );
-    if (!linhaMovimentos) return [];
-
-    // Separar os movimentos e remover números e pontos
-    const movimentos = linhaMovimentos.split(" ").filter((m) => {
-      const movimento = m.trim();
-      return (
-        movimento !== "" &&
-        !movimento.endsWith(".") &&
-        movimento !== "*" &&
-        !movimento.match(/^\d+\.\.\.$/) &&
-        !movimento.match(/^\d+\.$/)
-      );
-    });
-
-    console.log("Movimentos extraídos:", movimentos);
-    return movimentos;
-  };
-
-  const verificarPrimeiroLance = (pgn: string): boolean => {
-    const linhas = pgn.split("\n");
-    const linhaMovimentos = linhas.find((linha) =>
-      linha.trim().match(/^\d+\./)
-    );
-    if (!linhaMovimentos) return false;
-
-    // Se o primeiro movimento começa com "1...", é lance das negras
-    return linhaMovimentos.trim().startsWith("1...");
-  };
-
-  const carregarExercicio = (exercicio: Exercicio) => {
+  const carregarExercicio = useCallback((exercicio: Exercicio) => {
     const novoGame = new Chess();
 
     // Extrair FEN e carregar posição inicial
     const fen = extrairFEN(exercicio.pgn);
+
     if (fen) {
       novoGame.load(fen);
     }
@@ -82,7 +40,11 @@ const ChessboardWithDnd = () => {
     setGame(novoGame);
     setMovimentoAtual(0);
     setFeedback("Sua vez de jogar!");
-  };
+  }, []);
+
+  useEffect(() => {
+    carregarExercicio(exercicios[0]);
+  }, [carregarExercicio]);
 
   const fazerMovimentoAutomatico = () => {
     if (movimentoAtual < movimentosEsperados.length - 1) {
