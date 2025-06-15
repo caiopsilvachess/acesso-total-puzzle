@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/acesso-total-puzzle/static/css/main.a5542e3a.css",
+    "main.js": "/acesso-total-puzzle/static/js/main.41b43bd2.js",
+    "static/js/453.cb9254d6.chunk.js": "/acesso-total-puzzle/static/js/453.cb9254d6.chunk.js",
+    "static/media/refresh.svg": "/acesso-total-puzzle/static/media/refresh.fca4f3e27f366c8eadc769a323416899.svg",
+    "index.html": "/acesso-total-puzzle/index.html",
+    "main.a5542e3a.css.map": "/acesso-total-puzzle/static/css/main.a5542e3a.css.map",
+    "main.41b43bd2.js.map": "/acesso-total-puzzle/static/js/main.41b43bd2.js.map",
+    "453.cb9254d6.chunk.js.map": "/acesso-total-puzzle/static/js/453.cb9254d6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a5542e3a.css",
+    "static/js/main.41b43bd2.js"
+  ]
+}
