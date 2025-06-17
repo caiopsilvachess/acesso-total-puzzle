@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/acesso-total-puzzle/static/css/main.8e82a7b8.css",
-    "main.js": "/acesso-total-puzzle/static/js/main.ff67df31.js",
+    "main.css": "/acesso-total-puzzle/static/css/main.0e127d14.css",
+    "main.js": "/acesso-total-puzzle/static/js/main.ab1e4bcd.js",
     "static/media/lightbulb-05.svg": "/acesso-total-puzzle/static/media/lightbulb-05.e4e15dc836086c8cb7238885872fd84a.svg",
-    "static/media/refresh.svg": "/acesso-total-puzzle/static/media/refresh.136d7ba20544a75d13581abee2796f3d.svg",
     "index.html": "/acesso-total-puzzle/index.html",
+    "static/media/refresh.svg": "/acesso-total-puzzle/static/media/refresh.136d7ba20544a75d13581abee2796f3d.svg",
     "static/media/chevron-success-right.svg": "/acesso-total-puzzle/static/media/chevron-success-right.8b674315fb2ee97cf19ef0f73e1dc231.svg",
     "static/media/chevron-down.svg": "/acesso-total-puzzle/static/media/chevron-down.56fad73bb53322b8346c.svg",
     "static/media/chevron-right.svg": "/acesso-total-puzzle/static/media/chevron-right.8a7cacaf2927eb30694746cd8647f605.svg",
     "static/media/chevron-left.svg": "/acesso-total-puzzle/static/media/chevron-left.6638a8669f0b62d550ffd071f410bab8.svg",
-    "main.8e82a7b8.css.map": "/acesso-total-puzzle/static/css/main.8e82a7b8.css.map",
-    "main.ff67df31.js.map": "/acesso-total-puzzle/static/js/main.ff67df31.js.map"
+    "main.0e127d14.css.map": "/acesso-total-puzzle/static/css/main.0e127d14.css.map",
+    "main.ab1e4bcd.js.map": "/acesso-total-puzzle/static/js/main.ab1e4bcd.js.map"
   },
   "entrypoints": [
-    "static/css/main.8e82a7b8.css",
-    "static/js/main.ff67df31.js"
+    "static/css/main.0e127d14.css",
+    "static/js/main.ab1e4bcd.js"
   ]
 }
