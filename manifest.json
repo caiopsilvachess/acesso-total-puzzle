@@ -1,7 +1,6 @@
 {
-  "short_name": "Acesso Total Puzzle",
-  "name": "Acesso Total Puzzle - Treinamento de Xadrez",
-  "description": "Aplicação interativa para treinamento de xadrez através de puzzles e exercícios táticos",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",
@@ -11,40 +10,16 @@
     {
       "src": "logo192.png",
       "type": "image/png",
-      "sizes": "192x192",
-      "purpose": "any maskable"
+      "sizes": "192x192"
     },
     {
       "src": "logo512.png",
       "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any maskable"
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#f0f0f0",
-  "background_color": "#f0f0f0",
-  "orientation": "portrait-primary",
-  "scope": "/",
-  "lang": "pt-BR",
-  "categories": [
-    "education",
-    "games",
-    "puzzle"
-  ],
-  "screenshots": [
-    {
-      "src": "screenshot-wide.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide"
-    },
-    {
-      "src": "screenshot-narrow.png",
-      "sizes": "750x1334",
-      "type": "image/png",
-      "form_factor": "narrow"
-    }
-  ]
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
 }
