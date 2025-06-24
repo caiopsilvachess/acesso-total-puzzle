@@ -1,11 +1,12 @@
 {
   "files": {
-    "main.css": "/acesso-total-puzzle/static/css/main.59f50ca1.css",
-    "main.js": "/acesso-total-puzzle/static/js/main.da362bb2.js",
+    "main.css": "/acesso-total-puzzle/static/css/main.5a019a7f.css",
+    "main.js": "/acesso-total-puzzle/static/js/main.1ff47b83.js",
     "static/media/rafael_leitao_2.jpg": "/acesso-total-puzzle/static/media/rafael_leitao_2.4a9f2f76eeacaf226a80.jpg",
     "static/media/logo.png": "/acesso-total-puzzle/static/media/logo.1234ee0fa63046e74692.png",
     "static/media/lightbulb-05.svg": "/acesso-total-puzzle/static/media/lightbulb-05.e4e15dc836086c8cb7238885872fd84a.svg",
-    "static/media/refresh.svg": "/acesso-total-puzzle/static/media/refresh.136d7ba20544a75d13581abee2796f3d.svg",
+    "static/media/refresh-error.svg": "/acesso-total-puzzle/static/media/refresh-error.136d7ba20544a75d13581abee2796f3d.svg",
+    "static/media/refresh.svg": "/acesso-total-puzzle/static/media/refresh.53e870d3d09fbe07e0908f3f209ceca4.svg",
     "static/media/puzzle.svg": "/acesso-total-puzzle/static/media/puzzle.192a088612445174e8d357efc852bf66.svg",
     "index.html": "/acesso-total-puzzle/index.html",
     "static/media/home.svg": "/acesso-total-puzzle/static/media/home.388cf359777b512d6659159d8afca98c.svg",
@@ -14,11 +15,12 @@
     "static/media/chevron-right.svg": "/acesso-total-puzzle/static/media/chevron-right.8a7cacaf2927eb30694746cd8647f605.svg",
     "static/media/book.svg": "/acesso-total-puzzle/static/media/book.a1bbb009b3e77c55a083cdcf5e3fa71f.svg",
     "static/media/chevron-left.svg": "/acesso-total-puzzle/static/media/chevron-left.6638a8669f0b62d550ffd071f410bab8.svg",
-    "main.59f50ca1.css.map": "/acesso-total-puzzle/static/css/main.59f50ca1.css.map",
-    "main.da362bb2.js.map": "/acesso-total-puzzle/static/js/main.da362bb2.js.map"
+    "static/media/magnifying-glass.svg": "/acesso-total-puzzle/static/media/magnifying-glass.403816d8dc5f420d68f8feaf32f4faae.svg",
+    "main.5a019a7f.css.map": "/acesso-total-puzzle/static/css/main.5a019a7f.css.map",
+    "main.1ff47b83.js.map": "/acesso-total-puzzle/static/js/main.1ff47b83.js.map"
   },
   "entrypoints": [
-    "static/css/main.59f50ca1.css",
-    "static/js/main.da362bb2.js"
+    "static/css/main.5a019a7f.css",
+    "static/js/main.1ff47b83.js"
   ]
 }
