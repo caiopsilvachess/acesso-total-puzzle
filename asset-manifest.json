@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/acesso-total-puzzle/static/css/main.5a019a7f.css",
-    "main.js": "/acesso-total-puzzle/static/js/main.1ff47b83.js",
+    "main.css": "/acesso-total-puzzle/static/css/main.a4e873bc.css",
+    "main.js": "/acesso-total-puzzle/static/js/main.6daa8e80.js",
     "static/media/rafael_leitao_2.jpg": "/acesso-total-puzzle/static/media/rafael_leitao_2.4a9f2f76eeacaf226a80.jpg",
     "static/media/logo.png": "/acesso-total-puzzle/static/media/logo.1234ee0fa63046e74692.png",
     "static/media/lightbulb-05.svg": "/acesso-total-puzzle/static/media/lightbulb-05.e4e15dc836086c8cb7238885872fd84a.svg",
@@ -16,11 +16,11 @@
     "static/media/book.svg": "/acesso-total-puzzle/static/media/book.a1bbb009b3e77c55a083cdcf5e3fa71f.svg",
     "static/media/chevron-left.svg": "/acesso-total-puzzle/static/media/chevron-left.6638a8669f0b62d550ffd071f410bab8.svg",
     "static/media/magnifying-glass.svg": "/acesso-total-puzzle/static/media/magnifying-glass.403816d8dc5f420d68f8feaf32f4faae.svg",
-    "main.5a019a7f.css.map": "/acesso-total-puzzle/static/css/main.5a019a7f.css.map",
-    "main.1ff47b83.js.map": "/acesso-total-puzzle/static/js/main.1ff47b83.js.map"
+    "main.a4e873bc.css.map": "/acesso-total-puzzle/static/css/main.a4e873bc.css.map",
+    "main.6daa8e80.js.map": "/acesso-total-puzzle/static/js/main.6daa8e80.js.map"
   },
   "entrypoints": [
-    "static/css/main.5a019a7f.css",
-    "static/js/main.1ff47b83.js"
+    "static/css/main.a4e873bc.css",
+    "static/js/main.6daa8e80.js"
   ]
 }
