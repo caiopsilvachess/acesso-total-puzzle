@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/acesso-total-puzzle/static/css/main.2e6a5471.css",
-    "main.js": "/acesso-total-puzzle/static/js/main.751e536b.js",
+    "main.js": "/acesso-total-puzzle/static/js/main.c4e461d9.js",
     "static/media/rafael_leitao_2.jpg": "/acesso-total-puzzle/static/media/rafael_leitao_2.4a9f2f76eeacaf226a80.jpg",
     "static/media/logo.png": "/acesso-total-puzzle/static/media/logo.1234ee0fa63046e74692.png",
     "static/media/lightbulb-05.svg": "/acesso-total-puzzle/static/media/lightbulb-05.e4e15dc836086c8cb7238885872fd84a.svg",
@@ -19,10 +19,10 @@
     "static/media/pause.svg": "/acesso-total-puzzle/static/media/pause.59829ee686ee69627d183ea3524ae5dd.svg",
     "static/media/play.svg": "/acesso-total-puzzle/static/media/play.c8c43f5c8f2de2f1eb3730c539ebaa6a.svg",
     "main.2e6a5471.css.map": "/acesso-total-puzzle/static/css/main.2e6a5471.css.map",
-    "main.751e536b.js.map": "/acesso-total-puzzle/static/js/main.751e536b.js.map"
+    "main.c4e461d9.js.map": "/acesso-total-puzzle/static/js/main.c4e461d9.js.map"
   },
   "entrypoints": [
     "static/css/main.2e6a5471.css",
-    "static/js/main.751e536b.js"
+    "static/js/main.c4e461d9.js"
   ]
 }
