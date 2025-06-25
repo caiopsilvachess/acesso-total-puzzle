@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/acesso-total-puzzle/static/css/main.2256d676.css",
-    "main.js": "/acesso-total-puzzle/static/js/main.4218f09d.js",
+    "main.css": "/acesso-total-puzzle/static/css/main.82438fd8.css",
+    "main.js": "/acesso-total-puzzle/static/js/main.ba83dc6c.js",
     "static/media/rafael_leitao_2.jpg": "/acesso-total-puzzle/static/media/rafael_leitao_2.4a9f2f76eeacaf226a80.jpg",
     "static/media/logo.png": "/acesso-total-puzzle/static/media/logo.1234ee0fa63046e74692.png",
     "static/media/lightbulb-05.svg": "/acesso-total-puzzle/static/media/lightbulb-05.e4e15dc836086c8cb7238885872fd84a.svg",
@@ -15,15 +15,16 @@
     "static/media/chevron-down.svg": "/acesso-total-puzzle/static/media/chevron-down.56fad73bb53322b8346c.svg",
     "static/media/chevron-right.svg": "/acesso-total-puzzle/static/media/chevron-right.8a7cacaf2927eb30694746cd8647f605.svg",
     "static/media/chevron-left.svg": "/acesso-total-puzzle/static/media/chevron-left.6638a8669f0b62d550ffd071f410bab8.svg",
+    "static/media/chart.svg": "/acesso-total-puzzle/static/media/chart.084e1f0f6f4e3d3331c4eb81ba042518.svg",
+    "static/media/menu.svg": "/acesso-total-puzzle/static/media/menu.56fd6bd279658ae7b6af950c5ce1e764.svg",
     "static/media/magnifying-glass.svg": "/acesso-total-puzzle/static/media/magnifying-glass.403816d8dc5f420d68f8feaf32f4faae.svg",
     "static/media/pause.svg": "/acesso-total-puzzle/static/media/pause.59829ee686ee69627d183ea3524ae5dd.svg",
     "static/media/play.svg": "/acesso-total-puzzle/static/media/play.c8c43f5c8f2de2f1eb3730c539ebaa6a.svg",
-    "static/media/chart.svg": "/acesso-total-puzzle/static/media/chart.cf28378caa0c870a4bb383ff57d648b7.svg",
-    "main.2256d676.css.map": "/acesso-total-puzzle/static/css/main.2256d676.css.map",
-    "main.4218f09d.js.map": "/acesso-total-puzzle/static/js/main.4218f09d.js.map"
+    "main.82438fd8.css.map": "/acesso-total-puzzle/static/css/main.82438fd8.css.map",
+    "main.ba83dc6c.js.map": "/acesso-total-puzzle/static/js/main.ba83dc6c.js.map"
   },
   "entrypoints": [
-    "static/css/main.2256d676.css",
-    "static/js/main.4218f09d.js"
+    "static/css/main.82438fd8.css",
+    "static/js/main.ba83dc6c.js"
   ]
 }
