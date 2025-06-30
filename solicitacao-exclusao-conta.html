@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Solicitação de Exclusão de Conta - Acesso Total Xadrez</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      color: #222;
+      line-height: 1.6;
+      background-color: #f8f9fa;
+    }
+    
+    .container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    
+    .header h1 {
+      margin: 0 0 0.5rem 0;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    
+    .header p {
+      margin: 0;
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+    
+    .content {
+      padding: 2rem;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 0.5rem;
+    }
+    
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: #34495e;
+    }
+    
+    p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    
+    ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .steps {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .step {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      align-items: flex-start;
+    }
+    
+    .step:last-child {
+      margin-bottom: 0;
+    }
+    
+    .step-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      background: #007bff;
+      color: white;
+      border-radius: 50%;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    
+    .step-content h4 {
+      margin: 0 0 0.5rem 0;
+      color: #2c3e50;
+    }
+    
+    .step-content p {
+      margin: 0 0 0.5rem 0;
+    }
+    
+    .email-button {
+      display: inline-block;
+      background: #28a745;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      margin-top: 0.5rem;
+      transition: background-color 0.2s;
+    }
+    
+    .email-button:hover {
+      background: #218838;
+    }
+    
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .data-category {
+      background: #f8f9fa;
+      padding: 1rem;
+      border-radius: 6px;
+      border: 1px solid #e9ecef;
+    }
+    
+    .data-category h4 {
+      margin: 0 0 0.75rem 0;
+      color: #2c3e50;
+    }
+    
+    .retention-info {
+      background: #fff3cd;
+      border: 1px solid #ffeaa7;
+      padding: 1rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+    
+    .important-notes {
+      background: #d1ecf1;
+      border: 1px solid #bee5eb;
+      padding: 1rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+    
+    .contact-info {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+      margin-top: 2rem;
+    }
+    
+    .contact-info p {
+      margin: 0.5rem 0;
+    }
+    
+    .contact-info strong {
+      color: #2c3e50;
+    }
+    
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-style: italic;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+      
+      .header {
+        padding: 1.5rem;
+      }
+      
+      .header h1 {
+        font-size: 1.5rem;
+      }
+      
+      .content {
+        padding: 1.5rem;
+      }
+      
+      .step {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .data-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Solicitação de Exclusão de Conta</h1>
+      <p><strong>Acesso Total Xadrez</strong> - Desenvolvido por Caio Pereira da Silva</p>
+    </div>
+    
+    <div class="content">
+      <h2>Como Solicitar a Exclusão da Sua Conta</h2>
+      <p>
+        Para solicitar a exclusão da sua conta no aplicativo <strong>Acesso Total Xadrez</strong>, 
+        siga as etapas abaixo:
+      </p>
+      
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Envie um E-mail</h4>
+            <p>
+              Envie um e-mail para <strong>caiopsilva1@gmail.com</strong> com o assunto 
+              "Solicitação de Exclusão de Conta - Acesso Total Xadrez"
+            </p>
+            <a href="mailto:caiopsilva1@gmail.com?subject=Solicitação de Exclusão de Conta - Acesso Total Xadrez&body=Olá,%0D%0A%0D%0AGostaria de solicitar a exclusão da minha conta no aplicativo Acesso Total Xadrez.%0D%0A%0D%0APor favor, confirme o recebimento desta solicitação e informe sobre os próximos passos.%0D%0A%0D%0AAtenciosamente," class="email-button">
+              Enviar E-mail de Solicitação
+            </a>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Inclua as Informações Necessárias</h4>
+            <p>No e-mail, inclua as seguintes informações:</p>
+            <ul>
+              <li>Seu nome completo</li>
+              <li>Nome de usuário da conta</li>
+              <li>Endereço de e-mail da conta</li>
+              <li>Motivo da solicitação (opcional)</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>Confirmação e Processamento</h4>
+            <p>
+              Você receberá uma confirmação de recebimento em até 48 horas. 
+              O processamento da exclusão será concluído em até 30 dias.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <h2>Dados que Serão Excluídos</h2>
+      <p>Após a confirmação da solicitação, os seguintes dados serão permanentemente excluídos:</p>
+      
+      <div class="data-grid">
+        <div class="data-category">
+          <h4>Informações da Conta</h4>
+          <ul>
+            <li>Nome completo</li>
+            <li>Nome de usuário</li>
+            <li>Endereço de e-mail</li>
+            <li>Senha (já criptografada)</li>
+            <li>Função do usuário</li>
+          </ul>
+        </div>
+        
+        <div class="data-category">
+          <h4>Dados de Uso</h4>
+          <ul>
+            <li>Progresso nos puzzles</li>
+            <li>Estatísticas de desempenho</li>
+            <li>Histórico de partidas</li>
+            <li>Configurações personalizadas</li>
+            <li>Logs de atividade</li>
+          </ul>
+        </div>
+        
+        <div class="data-category">
+          <h4>Dados Técnicos</h4>
+          <ul>
+            <li>Informações do dispositivo</li>
+            <li>Dados de sessão</li>
+            <li>Cookies e tokens de autenticação</li>
+            <li>Backups da conta</li>
+          </ul>
+        </div>
+      </div>
+      
+      <h2>Período de Retenção de Dados</h2>
+      <p>
+        Após a exclusão da conta, alguns dados podem ser mantidos por períodos específicos:
+      </p>
+      
+      <div class="retention-info">
+        <h3>Dados de Backup</h3>
+        <p>Mantidos por até 90 dias para fins de recuperação em caso de exclusão acidental</p>
+        
+        <h3>Logs de Segurança</h3>
+        <p>Mantidos por até 1 ano para fins de auditoria e segurança</p>
+        
+        <h3>Dados Anonimizados</h3>
+        <p>Estatísticas agregadas podem ser mantidas indefinidamente, mas sem identificação pessoal</p>
+      </div>
+      
+      <h2>Informações Importantes</h2>
+      
+      <div class="important-notes">
+        <h3>⚠️ Irreversibilidade</h3>
+        <p>
+          A exclusão da conta é <strong>permanente e irreversível</strong>. 
+          Após a confirmação, não será possível recuperar seus dados.
+        </p>
+        
+        <h3>📧 Confirmação</h3>
+        <p>
+          Você receberá uma confirmação por e-mail antes da exclusão definitiva 
+          para garantir que a solicitação é legítima.
+        </p>
+        
+        <h3>🔒 Segurança</h3>
+        <p>
+          Todos os dados são excluídos de forma segura, seguindo as melhores 
+          práticas de proteção de dados.
+        </p>
+        
+        <h3>📱 Aplicativo</h3>
+        <p>
+          Após a exclusão, você não conseguirá mais acessar o aplicativo 
+          com a conta excluída.
+        </p>
+      </div>
+      
+      <h2>Alternativas à Exclusão</h2>
+      <p>
+        Antes de solicitar a exclusão da conta, considere estas alternativas:
+      </p>
+      
+      <ul>
+        <li><strong>Desativar Temporariamente:</strong> Se você planeja retornar ao aplicativo no futuro, podemos desativar sua conta temporariamente em vez de excluí-la permanentemente.</li>
+        <li><strong>Limpar Dados:</strong> Podemos limpar seus dados de progresso e estatísticas, mantendo apenas as informações básicas da conta.</li>
+        <li><strong>Suporte:</strong> Se você está enfrentando problemas com o aplicativo, entre em contato conosco para obter suporte antes de decidir pela exclusão.</li>
+      </ul>
+      
+      <div class="contact-info">
+        <h3>Informações de Contato</h3>
+        <p><strong>Desenvolvedor:</strong> Caio Pereira da Silva</p>
+        <p><strong>E-mail:</strong> caiopsilva1@gmail.com</p>
+        <p><strong>Tempo de Resposta:</strong> Até 48 horas</p>
+        <p><strong>Idiomas:</strong> Português e Inglês</p>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    Esta página foi criada para atender aos requisitos do Google Play Store e garantir 
+    transparência no processo de exclusão de conta do aplicativo Acesso Total Xadrez.
+  </footer>
+</body>
+</html> 
