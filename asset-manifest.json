@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/acesso-total-puzzle/static/css/main.513ee6f1.css",
-    "main.js": "/acesso-total-puzzle/static/js/main.fbd7e063.js",
+    "main.css": "/acesso-total-puzzle/static/css/main.069f5dfd.css",
+    "main.js": "/acesso-total-puzzle/static/js/main.e874ea5e.js",
     "static/media/chessboard.jpeg": "/acesso-total-puzzle/static/media/chessboard.91010bd5e5ea3d97f9b3.jpeg",
     "static/media/rafael_leitao_2.jpg": "/acesso-total-puzzle/static/media/rafael_leitao_2.4a9f2f76eeacaf226a80.jpg",
     "static/media/logo.png": "/acesso-total-puzzle/static/media/logo.1234ee0fa63046e74692.png",
@@ -20,17 +20,19 @@
     "static/media/white-king2.svg": "/acesso-total-puzzle/static/media/white-king2.a0f2a98db94639620915a6838e08f152.svg",
     "static/media/chart.svg": "/acesso-total-puzzle/static/media/chart.b570cb092ef6ad0579b250be812d8887.svg",
     "static/media/refresh.svg": "/acesso-total-puzzle/static/media/refresh.3fa595b22ac7020b46b53f94800bfcf0.svg",
+    "static/media/save.svg": "/acesso-total-puzzle/static/media/save.e2b335d28d50f1143d6dccc0226687ba.svg",
     "static/media/menu.svg": "/acesso-total-puzzle/static/media/menu.56fd6bd279658ae7b6af950c5ce1e764.svg",
     "static/media/chessboard2.svg": "/acesso-total-puzzle/static/media/chessboard2.bad2e05e9325cd2ca688c199cef7bfe3.svg",
+    "static/media/trash.svg": "/acesso-total-puzzle/static/media/trash.14227052dac2e311a88524f564570e13.svg",
     "static/media/pause.svg": "/acesso-total-puzzle/static/media/pause.f4010aaa6d15a2d6f850dccfa8c0669b.svg",
     "static/media/chevron-right.svg": "/acesso-total-puzzle/static/media/chevron-right.5f18a862dd0ba1129ea99e182dfa51ea.svg",
     "static/media/chevron-left.svg": "/acesso-total-puzzle/static/media/chevron-left.0ee5918ca7078021f22f4b7ed90409ad.svg",
     "static/media/play.svg": "/acesso-total-puzzle/static/media/play.bb0ee69a8fe920af6faa4356b85c34f6.svg",
-    "main.513ee6f1.css.map": "/acesso-total-puzzle/static/css/main.513ee6f1.css.map",
-    "main.fbd7e063.js.map": "/acesso-total-puzzle/static/js/main.fbd7e063.js.map"
+    "main.069f5dfd.css.map": "/acesso-total-puzzle/static/css/main.069f5dfd.css.map",
+    "main.e874ea5e.js.map": "/acesso-total-puzzle/static/js/main.e874ea5e.js.map"
   },
   "entrypoints": [
-    "static/css/main.513ee6f1.css",
-    "static/js/main.fbd7e063.js"
+    "static/css/main.069f5dfd.css",
+    "static/js/main.e874ea5e.js"
   ]
 }
