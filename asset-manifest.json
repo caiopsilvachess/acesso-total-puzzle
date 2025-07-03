@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/acesso-total-puzzle/static/css/main.c37a01ca.css",
-    "main.js": "/acesso-total-puzzle/static/js/main.ff03246f.js",
+    "main.js": "/acesso-total-puzzle/static/js/main.8df751a9.js",
+    "static/media/logo.png": "/acesso-total-puzzle/static/media/logo.9534106e5f71395ebe13.png",
     "static/media/chessboard.jpeg": "/acesso-total-puzzle/static/media/chessboard.91010bd5e5ea3d97f9b3.jpeg",
     "static/media/rafael_leitao_2.jpg": "/acesso-total-puzzle/static/media/rafael_leitao_2.4a9f2f76eeacaf226a80.jpg",
-    "static/media/logo.png": "/acesso-total-puzzle/static/media/logo.1234ee0fa63046e74692.png",
     "static/media/refresh-error.svg": "/acesso-total-puzzle/static/media/refresh-error.136d7ba20544a75d13581abee2796f3d.svg",
     "static/media/puzzle.svg": "/acesso-total-puzzle/static/media/puzzle.c4ea8f463835891e85d496f84c422a73.svg",
     "static/media/microchip.svg": "/acesso-total-puzzle/static/media/microchip.421ada92203d913e6c47a7698fdab0d2.svg",
@@ -29,10 +29,10 @@
     "static/media/chevron-left.svg": "/acesso-total-puzzle/static/media/chevron-left.0ee5918ca7078021f22f4b7ed90409ad.svg",
     "static/media/play.svg": "/acesso-total-puzzle/static/media/play.bb0ee69a8fe920af6faa4356b85c34f6.svg",
     "main.c37a01ca.css.map": "/acesso-total-puzzle/static/css/main.c37a01ca.css.map",
-    "main.ff03246f.js.map": "/acesso-total-puzzle/static/js/main.ff03246f.js.map"
+    "main.8df751a9.js.map": "/acesso-total-puzzle/static/js/main.8df751a9.js.map"
   },
   "entrypoints": [
     "static/css/main.c37a01ca.css",
-    "static/js/main.ff03246f.js"
+    "static/js/main.8df751a9.js"
   ]
 }
