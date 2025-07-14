@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/acesso-total-puzzle/static/css/main.88afe9cb.css",
-    "main.js": "/acesso-total-puzzle/static/js/main.af647f40.js",
+    "main.css": "/acesso-total-puzzle/static/css/main.7098cabc.css",
+    "main.js": "/acesso-total-puzzle/static/js/main.fc8ca80a.js",
     "static/media/logo.png": "/acesso-total-puzzle/static/media/logo.9534106e5f71395ebe13.png",
     "static/media/chessboard.jpeg": "/acesso-total-puzzle/static/media/chessboard.91010bd5e5ea3d97f9b3.jpeg",
     "static/media/rafael_leitao_2.jpg": "/acesso-total-puzzle/static/media/rafael_leitao_2.4a9f2f76eeacaf226a80.jpg",
     "static/media/refresh-error.svg": "/acesso-total-puzzle/static/media/refresh-error.136d7ba20544a75d13581abee2796f3d.svg",
     "static/media/puzzle.svg": "/acesso-total-puzzle/static/media/puzzle.c4ea8f463835891e85d496f84c422a73.svg",
     "static/media/microchip.svg": "/acesso-total-puzzle/static/media/microchip.421ada92203d913e6c47a7698fdab0d2.svg",
+    "static/media/pencil.svg": "/acesso-total-puzzle/static/media/pencil.cc01d0f28e55dab9b2561565151b9449.svg",
     "index.html": "/acesso-total-puzzle/index.html",
     "static/media/black-king2.svg": "/acesso-total-puzzle/static/media/black-king2.990cd6ea707e3e8bbf8ff1715d56a0c2.svg",
     "static/media/repeat.svg": "/acesso-total-puzzle/static/media/repeat.fe98fc7d9bca08203f62fc99a56f6464.svg",
@@ -22,14 +23,15 @@
     "static/media/save.svg": "/acesso-total-puzzle/static/media/save.e2b335d28d50f1143d6dccc0226687ba.svg",
     "static/media/menu.svg": "/acesso-total-puzzle/static/media/menu.56fd6bd279658ae7b6af950c5ce1e764.svg",
     "static/media/eraser.svg": "/acesso-total-puzzle/static/media/eraser.31313a47dfa05cebd06f52bfa876e002.svg",
+    "static/media/trash.svg": "/acesso-total-puzzle/static/media/trash.14227052dac2e311a88524f564570e13.svg",
     "static/media/plus.svg": "/acesso-total-puzzle/static/media/plus.02d32f1a0a805169615ec924b3bd2e1c.svg",
     "static/media/chevron-right.svg": "/acesso-total-puzzle/static/media/chevron-right.5f18a862dd0ba1129ea99e182dfa51ea.svg",
     "static/media/chevron-left.svg": "/acesso-total-puzzle/static/media/chevron-left.0ee5918ca7078021f22f4b7ed90409ad.svg",
-    "main.88afe9cb.css.map": "/acesso-total-puzzle/static/css/main.88afe9cb.css.map",
-    "main.af647f40.js.map": "/acesso-total-puzzle/static/js/main.af647f40.js.map"
+    "main.7098cabc.css.map": "/acesso-total-puzzle/static/css/main.7098cabc.css.map",
+    "main.fc8ca80a.js.map": "/acesso-total-puzzle/static/js/main.fc8ca80a.js.map"
   },
   "entrypoints": [
-    "static/css/main.88afe9cb.css",
-    "static/js/main.af647f40.js"
+    "static/css/main.7098cabc.css",
+    "static/js/main.fc8ca80a.js"
   ]
 }
